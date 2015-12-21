@@ -5,12 +5,19 @@ import { Provider } from 'react-redux';
 
 import { Player } from './components';
 import configureStore from './store';
+import DevTools from './DevTools';
 
 const store = configureStore();
 
+require('normalize.css');
+require('../style/style.css');
+
 DOM.render(
   <Provider {...{store}}>
-    <Player />
+    <div>
+      <Player />
+      <DevTools />
+    </div>
   </Provider>,
   document.getElementById('app')
 );

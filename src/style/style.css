@@ -1,0 +1,144 @@
+@font-face {
+	font-family: 'player-icons';
+	src:
+		url('fonts/player-icons.ttf?nqoeuo') format('truetype'),
+		url('fonts/player-icons.woff?nqoeuo') format('woff'),
+		url('fonts/player-icons.svg?nqoeuo#player-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="player-icon-"], [class*=" player-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'player-icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.player-icon-artist:before {
+	content: "\e900";
+}
+.player-icon-song:before {
+	content: "\e901";
+}
+.player-icon-play:before {
+	content: "\e902";
+}
+.player-icon-pause:before {
+	content: "\e903";
+}
+.player-icon-volume-mute:before {
+	content: "\e904";
+}
+.player-icon-volume-low:before {
+	content: "\e905";
+}
+.player-icon-volume-medium:before {
+	content: "\e906";
+}
+.player-icon-volume-high:before {
+	content: "\e907";
+}
+.player-icon-connect:before {
+	content: "\e908";
+}
+.player-icon-config:before {
+	content: "\e909";
+}
+.player-icon-power:before {
+	content: "\e90a";
+}
+.player-icon-spinner:before {
+	content: "\e90b";
+}
+.player-icon-band:before {
+	content: "\e90c";
+}
+
+/*** CUSTOM STYLES ***/
+.player-container {
+    font-size: 1.25em;
+}
+.player-icon-spinner {
+    color: rgb(122, 122, 122);
+    border-radius: 50%;
+    box-shadow: 0 0 3px #808080;
+    font-size: 2em;
+    width: 1em;
+    height: 1em;
+}
+
+.do-spin {
+    display: block;
+    width: 2em;
+    height: 2em;
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin 1s infinite linear;
+    -ms-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+}
+.hidden  {
+    display: none;
+}
+
+.player-icon {
+    width:2em;
+    height:2em;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: #262626;
+    box-shadow: 0 0 3px gray;
+    font-size:2em;
+    font-weight:bold;
+}
+
+.player-icon[disabled], .player-icon:hover[disabled] {
+    background-color: #A7A7A7;
+    border: 2px solid #f5f5f5;
+}
+
+.player-icon:hover {
+    background: #464646;
+}
+
+.player-icon__grey {
+    color: darkgrey;
+}
+.player-icon__green {
+    color: #54F20F;
+}
+.player-icon__red {
+    color: red;
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes spin {
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-ms-keyframes spin {
+    to {
+        -ms-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

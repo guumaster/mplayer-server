@@ -1,12 +1,15 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
+import DevTools from './DevTools';
+
 
 import rootReducer from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunkMiddleware,
-  createLogger()
+const createStoreWithMiddleware = compose(
+  applyMiddleware(thunkMiddleware, createLogger()),
+  // Required! Enable Redux DevTools with the monitors you chose
+  DevTools.instrument()
 )(createStore);
 
 export default function configureStore(initialState) {

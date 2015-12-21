@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { combineReducers, bindActionCreators } from 'redux';
+import classNames from 'classname';
 
 import { PlayButton, PauseButton, ConnectButton, DisconnectButton } from './buttons';
 import * as actions from '../actions';
@@ -39,19 +40,34 @@ const PlayerComp = React.createClass({
 
     const {
       player: { fetching, playing, artist, song },
-      socket: { connected }
+      socket: { connecting, connected }
       } = this.props;
 
-    return <div>
+    const spinnerClass = classNames([
+      ( fetching || connecting ) ? 'do-spin' : 'hidden',
+      //'do-spin'
+    ]);
+
+    const styles = {
+      fontSize: '1.25em'
+    };
+
+    return <div className="player-container">
       {this.mainButton()}
       {this.connectButton()}
       <div>
 
-        <div>playing: { playing ? `${artist} / ${song}` : '' }</div>
 
-        <div>status: {playing ? 'playing':'paused'}</div>
-        <div>connection: {connected ? 'on' : 'off'}</div>
-        <div>{fetching ? '...':''}</div>
+        <div style={styles}>
+
+          <div><span className="player-icon-artist" /> { playing ? `${artist}` : '' }</div>
+          <div><span className="player-icon-song" /> { playing ? `${song}` : '' }</div>
+
+          <div>status: {playing ? 'playing':'paused'}</div>
+          <div>connection: {connected ? 'on' : 'off'}</div>
+          <div className={spinnerClass}><span className='player-icon-spinner' /></div>
+        </div>
+
       </div>
 
     </div>;
