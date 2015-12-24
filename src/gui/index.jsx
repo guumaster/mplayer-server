@@ -9,9 +9,6 @@ import DevTools from './DevTools';
 
 const store = configureStore();
 
-require('normalize.css');
-require('../style/style.css');
-
 DOM.render(
   <Provider {...{store}}>
     <div>

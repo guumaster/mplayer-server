@@ -1,13 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { combineReducers, bindActionCreators } from 'redux';
-import classNames from 'classname';
 
-import { PlayButton, PauseButton, ConnectButton, DisconnectButton } from './buttons';
 import * as actions from '../actions';
+import { PlayButton, PauseButton, ConnectButton, DisconnectButton } from './buttons';
+import { Spinner } from './Spinner';
+import { SongInfo } from './SongInfo';
 
+import '../shared/styles/base.css';
+import style from './Player.css';
 
 const PlayerComp = React.createClass({
+  render() {
+
+    const {
+      player: { fetching, playing, artist, song },
+      socket: { connecting, connected }
+      } = this.props;
+
+    const showSpinner = ( fetching || connecting );
+
+
+    return <div className='Player'>
+      {this.mainButton()}
+      {this.connectButton()}
+      <div>
+        <SongInfo {...{ artist, song }} />
+        <Spinner show={showSpinner} />
+
+        <div>status: {playing ? 'playing':'paused'}</div>
+        <div>connection: {connected ? 'on' : 'off'}</div>
+      </div>
+    </div>;
+  },
   mainButton () {
     const {
       play, pause,
@@ -35,42 +60,6 @@ const PlayerComp = React.createClass({
     }
 
     return <ConnectButton onClick={connect} />;
-  },
-  render() {
-
-    const {
-      player: { fetching, playing, artist, song },
-      socket: { connecting, connected }
-      } = this.props;
-
-    const spinnerClass = classNames([
-      ( fetching || connecting ) ? 'do-spin' : 'hidden',
-      //'do-spin'
-    ]);
-
-    const styles = {
-      fontSize: '1.25em'
-    };
-
-    return <div className="player-container">
-      {this.mainButton()}
-      {this.connectButton()}
-      <div>
-
-
-        <div style={styles}>
-
-          <div><span className="player-icon-artist" /> { playing ? `${artist}` : '' }</div>
-          <div><span className="player-icon-song" /> { playing ? `${song}` : '' }</div>
-
-          <div>status: {playing ? 'playing':'paused'}</div>
-          <div>connection: {connected ? 'on' : 'off'}</div>
-          <div className={spinnerClass}><span className='player-icon-spinner' /></div>
-        </div>
-
-      </div>
-
-    </div>;
   }
 });
 

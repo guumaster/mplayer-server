@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'player-icons';
+	src:
+		url('./fonts/player-icons.ttf?nqoeuo') format('truetype'),
+		url('./fonts/player-icons.woff?nqoeuo') format('woff'),
+		url('./fonts/player-icons.svg?nqoeuo#player-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="player-icon-"], [class*=" player-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'player-icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.player-icon-artist:before {
+	content: "\e900";
+}
+.player-icon-song:before {
+	content: "\e901";
+}
+.player-icon-play:before {
+	content: "\e902";
+}
+.player-icon-pause:before {
+	content: "\e903";
+}
+.player-icon-volume-mute:before {
+	content: "\e904";
+}
+.player-icon-volume-low:before {
+	content: "\e905";
+}
+.player-icon-volume-medium:before {
+	content: "\e906";
+}
+.player-icon-volume-high:before {
+	content: "\e907";
+}
+.player-icon-connect:before {
+	content: "\e908";
+}
+.player-icon-config:before {
+	content: "\e909";
+}
+.player-icon-power:before {
+	content: "\e90a";
+}
+.player-icon-spinner:before {
+	content: "\e90b";
+}
+.player-icon-band:before {
+	content: "\e90c";
+}
